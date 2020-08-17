@@ -1,0 +1,90 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Zaposlenici>
+
+@{
+    ViewData["Title"] = "Početna";
+    ViewData["Controller"] = "Zaposlenici";
+    ViewData["Action"] = "Index";
+}
+
+@*Grupa1Ozo.Models.ZaposleniciOpcinaViewModel*@
+@*cloudscribe.Pagination.Models.PagedResult<Zaposlenici>*@
+@*IEnumerable<Grupa1Ozo.Models.Zaposlenici>*@
+
+<h2>Lista zaposlenika</h2>
+
+<p>
+    <a class="btn btn-primary my-1" asp-action="Create">Dodaj novog zaposlenika</a>
+
+    <a class="btn btn-primary my-1" asp-controller="Opcina" asp-action="Index">Dodaj opcinu</a>
+</p>
+
+<form asp-controller="Zaposlenici" asp-action="Index" method="get">
+    <p>
+        <a class="btn btn-danger mb-2" asp-controller="Zaposlenici" asp-action="Index">Ukloni filtere</a>
+        <br />
+
+        Opcina:
+        <select class="col-lg-2 my-1 form-control d-inline" name="opcina" asp-items="ViewBag.Opcine">
+            <option selected value="@ViewBag.CurrentOpcina">@ViewBag.CurrentOpcina</option>
+            <option value="">Sve</option>
+        </select>
+
+        Struka:
+        <select class="col-lg-2 my-1 form-control d-inline" name="struka" asp-items="ViewBag.Struke">
+            <option selected value="@ViewBag.CurrentStruka">@ViewBag.CurrentStruka</option>
+            <option value="">Sve</option>
+        </select>
+
+        Certifikat:
+        <select class="col-lg-2 my-1 form-control d-inline" name="certifikat" asp-items="ViewBag.Certifikati">
+            <option selected value="@ViewBag.CurrentCertifikat">@ViewBag.CurrentCertifikat</option>
+            <option value="">Sve</option>
+        </select>
+
+        Ime:
+        <input class="col-lg-2 my-1 form-control d-inline" type="text" name="SearchString" value="@ViewBag.CurrentSearchstring">
+        <input class="btn btn-primary" type="submit" value="Traži" />
+    </p>
+</form>
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                Ime
+            </th>
+            <th>
+                Prezime
+            </th>
+            <th>
+                Općina
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opcina.Naziv)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ZaposleniciId">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.ZaposleniciId">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ZaposleniciId">Izbriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<partial name="_PaginationPartial" view-data="ViewData" model="Model" />

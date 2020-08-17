@@ -1,0 +1,45 @@
+﻿@model Grupa1Ozo.Models.Oprema
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Izbriši</h1>
+
+<h3 class="text-danger">Jeste li sigurni da želite izbrisati ovu opremu?</h3>
+<div>
+    <h4>Oprema</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NazivOpreme)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NazivOpreme)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Raspolozivost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Raspolozivost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Skladiste)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Skladiste.Naziv)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Usluga)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Usluga.Naziv)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OpremaId" />
+        <input type="submit" value="Izbriši" class="btn btn-danger" /> |
+        <a asp-action="Index">Natrag</a>
+    </form>
+</div>

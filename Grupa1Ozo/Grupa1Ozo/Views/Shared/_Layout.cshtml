@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Grupa1Ozo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Grupa1Ozo</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <div class="dropdown mx-2 my-1">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Zaposlenici
+                            </button>
+                            <li class="nav-item">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Zaposlenici" asp-action="Index">Zaposlenici</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opcina" asp-action="Index">Opcine</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Struka" asp-action="Index">Struke</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Certifikati" asp-action="Index">Certifikati</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="ZaposleniciStruka" asp-action="Index">Struka zaposlenika</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="ZaposleniciCertifikati" asp-action="Index">Certifikati zaposlenika</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="dropdown mx-2 my-1">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Usluga
+                            </button>
+                            <li class="nav-item">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usluga" asp-action="Index">Usluga</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="KategorijaUsluge" asp-action="Index">KategorijeUsluga</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="UslugaNarudzba" asp-action="Index">Narudžba</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Oprema" asp-action="Index">Oprema</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Kupac" asp-action="Index">Kupac</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="dropdown mx-2 my-1">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Oprema
+                            </button>
+                            <li class="nav-item">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Oprema" asp-action="Index">Oprema</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Skladiste" asp-action="Index">Skladište</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Lokacija" asp-action="Index">Lokacija</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="dropdown mx-2 my-1">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Natječaji
+                            </button>
+                            <li class="nav-item">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Natjecaj" asp-action="Index">Natječaji</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="JavniNatjecaj" asp-action="Index">Javni natječaj</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="JavniNatjecajPonude" asp-action="Index">Ponude</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Posao" asp-action="Index">Posao</a>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Grupa1Ozo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privatnost</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

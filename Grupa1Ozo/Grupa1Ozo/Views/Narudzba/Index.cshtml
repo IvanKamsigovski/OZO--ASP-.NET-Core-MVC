@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Grupa1Ozo.Models.Narudzba>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Narudzba";
+    ViewData["Action"] = "Index";
+}
+
+<h1></h1>
+
+<p>
+    <a asp-controller="UslugaNarudzba" asp-action="Index" class="btn btn-primary">Natrag</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DatumNarudzbe
+            </th>
+            <th>
+                StatusNarudzbe
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusNarudzbe)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.NarudzbaId">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.NarudzbaId">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

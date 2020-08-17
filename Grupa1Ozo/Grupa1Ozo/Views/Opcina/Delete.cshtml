@@ -1,0 +1,27 @@
+﻿@model Grupa1Ozo.Models.Opcina
+
+@{
+    ViewData["Title"] = "Izbriši";
+}
+
+<h1>Izbriši</h1>
+
+<h3 class="text-danger">Da li ste sigurni da želite izbrisati opcinu?</h3>
+<div>
+    <h4>Opcina</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OpcinaId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Natrag</a>
+    </form>
+</div>

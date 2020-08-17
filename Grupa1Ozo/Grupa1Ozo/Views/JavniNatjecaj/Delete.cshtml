@@ -1,0 +1,27 @@
+﻿@model Grupa1Ozo.Models.JavniNatjecaj
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Izbriši</h1>
+
+<h3>Jeste li sigurni da želite izbrisati?</h3>
+<div>
+    <h4>JavniNatjecaj</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dobitnik)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dobitnik)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="JavniNatjecajId" />
+        <input type="submit" value="Izbriši" class="btn btn-danger" /> |
+        <a asp-action="Index">Natrag</a>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+﻿@model Grupa1Ozo.Models.ZaposleniciPosla
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ZaposleniciPosla</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZaposlenikId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZaposlenikId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Posao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Posao.Opis)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ZaposleniciPoslaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

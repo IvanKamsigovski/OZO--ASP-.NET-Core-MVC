@@ -1,0 +1,30 @@
+﻿@model Grupa1Ozo.Models.Natjecaj
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Natjecaj</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JavniNatjecaj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JavniNatjecaj.Dobitnik)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NatjecajId">Uredi</a> |
+    <a asp-action="Index">Natrag</a>
+</div>

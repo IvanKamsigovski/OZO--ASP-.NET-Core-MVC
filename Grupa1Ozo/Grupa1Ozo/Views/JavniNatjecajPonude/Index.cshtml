@@ -1,0 +1,70 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<JavniNatjecajPonude>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "JavniNatjecajPonude";
+    ViewData["Action"] = "Index";
+}
+
+<h1>Ponude</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj novu ponudu</a>
+</p>
+
+<form asp-controller="JavniNatjecajPonude" asp-action="Index" method="get">
+    <p>
+        <a class="btn btn-danger" asp-controller="JavniNatjecajPonude" asp-action="Index">Ukloni filtere</a>
+    <br />
+
+    Natjecatelj:
+    <select class="col-lg-2 my-1 form-control d-inline" name="JavniNatjecaj" asp-items="ViewBag.javniNatjecaj">
+        <option selected value="@ViewBag.CurrentJNatjecaj">@ViewBag.CurrentJNatjecaj</option>
+        <option value="">Sve</option>
+    </select>
+
+    Firma:
+    <input class="col-lg-2 my-1 form-control d-inline" type="text" name="searchFirma" value="@ViewBag.CurrentFirma">
+
+    <input class="btn btn-primary" type="submit" value="Traži" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Firma
+            </th>
+            <th>
+                Cijena
+            </th>
+            <th>
+                Natjecatelj
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Data) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JavniNatjecaj.Dobitnik)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.JavniNatjecajPonudeId">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.JavniNatjecajPonudeId">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.JavniNatjecajPonudeId">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<partial name="_PaginationPartial" view-data="ViewData" model="Model" />

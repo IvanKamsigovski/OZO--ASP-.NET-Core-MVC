@@ -1,0 +1,46 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Lokacija>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Lokacija";
+    ViewData["Action"] = "Index";
+}
+
+<h2>Lista lokacija</h2>
+
+<p>
+    <a class="btn btn-primary my-1" asp-action="Create">Dodaj novu lokaciju</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Adresa
+            </th>
+            <th>
+                Grad
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grad)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.LokacijaId">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.LokacijaId">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.LokacijaId">Izbriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<partial name="_PaginationPartial" view-data="ViewData" model="Model" />

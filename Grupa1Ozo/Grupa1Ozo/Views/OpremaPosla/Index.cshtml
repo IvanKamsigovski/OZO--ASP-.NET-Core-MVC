@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Grupa1Ozo.Models.OpremaPosla>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "OpremaPosla";
+    ViewData["Action"] = "Index";
+}
+
+<h1>Poslovna oprema</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OpremaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpremaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Posao.Opis)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OpremaPoslaId">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.OpremaPoslaId">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.OpremaPoslaId">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

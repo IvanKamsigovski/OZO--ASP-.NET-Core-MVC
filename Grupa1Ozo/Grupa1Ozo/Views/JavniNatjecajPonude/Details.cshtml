@@ -1,0 +1,36 @@
+﻿@model Grupa1Ozo.Models.JavniNatjecajPonude
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <h4>Ponude</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Firma)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Firma)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cijena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cijena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JavniNatjecaj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JavniNatjecaj.Dobitnik)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.JavniNatjecajPonudeId">Uredi</a> |
+    <a asp-action="Index">Natrag</a>
+</div>

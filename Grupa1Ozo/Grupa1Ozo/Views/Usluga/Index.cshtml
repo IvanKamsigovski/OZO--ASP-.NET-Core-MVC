@@ -1,0 +1,82 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Usluga>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Usluga";
+    ViewData["Action"] = "Index";
+}
+
+@*Grupa1Ozo.Models.UslugaKategorijaUslugeViewModel*@
+@*cloudscribe.Pagination.Models.PagedResult<Usluga>*@
+@*IEnumerable<Grupa1Ozo.Models.Usluga>*@
+
+<h2>Lista usluga</h2>
+
+<p>
+    <a class="btn btn-primary my-1" asp-action="Create">Dodaj novu uslugu</a>
+
+    <a class="btn btn-primary my-1" asp-controller="KategorijaUsluge" asp-action="Index">Dodaj kategoriju usluge</a>
+</p>
+
+<form asp-controller="Usluga" asp-action="Index" method="get">
+    <p>
+        <a class="btn btn-danger mb-2" asp-controller="Usluga" asp-action="Index">Ukloni filtere</a>
+        <br />
+
+        Kategorija usluge:
+        <select class="col-lg-2 my-1 form-control d-inline" name="kategorijausluge" asp-items="ViewBag.KategorijeUsluga">
+            <option selected value="@ViewBag.CurrentKategorijaUsluge">@ViewBag.CurrentKategorijaUsluge</option>
+            <option value="">Sve</option>
+        </select>
+
+        Usluge:
+        <input class="col-lg-2 my-1 form-control d-inline" type="text" name="SearchString" value="@ViewBag.CurrentSearchstring">
+        <input class="btn btn-primary" type="submit" value="Traži" />
+    </p>
+</form>
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Cijena
+            </th>
+            <th>
+                KategorijaUsluge
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cijena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KategorijaUsluge.Naziv)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UslugaId">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.UslugaId">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UslugaId">Izbriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<partial name="_PaginationPartial" view-data="ViewData" model="Model" />

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Grupa1Ozo.Models.ZaposleniciPosla>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ZaposlenikId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZaposlenikId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Posao.Opis)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ZaposleniciPoslaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ZaposleniciPoslaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ZaposleniciPoslaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

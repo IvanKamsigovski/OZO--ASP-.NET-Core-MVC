@@ -1,0 +1,88 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Oprema>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["Controller"] = "Oprema";
+    ViewData["Action"] = "Index";
+}
+
+@*Grupa1Ozo.Models.OpremaSkladisteViewModel*@
+@*cloudscribe.Pagination.Models.PagedResult<Oprema>*@
+@*IEnumerable<Grupa1Ozo.Models.Oprema>*@
+
+<h2>Lista opreme</h2>
+
+<p>
+    <a class="btn btn-primary my-1" asp-action="Create">Dodaj novu opremu</a>
+
+    <a class="btn btn-primary my-1" asp-controller="Skladiste" asp-action="Index">Dodaj skladište</a>
+</p>
+
+<form asp-controller="Oprema" asp-action="Index" method="get">
+    <p>
+        <a class="btn btn-danger mb-2" asp-controller="Oprema" asp-action="Index">Ukloni filtere</a>
+        <br />
+
+        Skladište:
+        <select class="col-lg-2 my-1 form-control d-inline" name="skladiste" asp-items="ViewBag.Skladista">
+            <option selected value="@ViewBag.CurrentSkladiste">@ViewBag.CurrentSkladiste</option>
+            <option value="">Sve</option>
+        </select>
+
+        Usluga:
+        <select class="col-lg-2 my-1 form-control d-inline" name="usluga" asp-items="ViewBag.Usluge">
+            <option selected value="@ViewBag.CurrentUsluga">@ViewBag.CurrentUsluga</option>
+            <option value="">Sve</option>
+        </select>
+
+        Oprema:
+        <input class="col-lg-2 my-1 form-control d-inline" type="text" name="SearchString" value="@ViewBag.CurrentSearchstring">
+        <input class="btn btn-primary" type="submit" value="Traži" />
+    </p>
+</form>
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                NazivOpreme
+            </th>
+            <th>
+                Raspoloživost
+            </th>
+            <th>
+                Skladište
+            </th>
+            <th>
+                Usluga
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivOpreme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Raspolozivost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Skladiste.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usluga.Naziv)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OpremaId">Uredi</a> |
+                    <a asp-action="Details" asp-route-id="@item.OpremaId">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OpremaId">Izbriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<partial name="_PaginationPartial" view-data="ViewData" model="Model" />
